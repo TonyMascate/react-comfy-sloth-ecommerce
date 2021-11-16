@@ -14,7 +14,9 @@ const AboutPage = () => {
             <h2>Notre histoire</h2>
             <div className="underline"></div>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus cupiditate est, sunt sapiente hic mollitia expedita fugit iste temporibus obcaecati nesciunt architecto incidunt quas tenetur enim, unde non deserunt corporis.</p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit dolores iste consequuntur pariatur, est earum voluptatum ex necessitatibus sed ratione dolor dignissimos adipisci repellendus. Fuga quidem, quia soluta quis, natus doloribus at, perferendis dolorem facilis pariatur ullam. Quibusdam labore, ab, pariatur minus porro voluptates eos vitae expedita accusamus qui cumque.
+          </p>
         </article>
       </Wrapper>
     </main>
@@ -34,7 +36,7 @@ const Wrapper = styled.section`
   p {
     line-height: 2;
     max-width: 45em;
-    margin: 0 auto;
+    margin: 0;
     margin-top: 2rem;
     color: var(--clr-grey-5);
   }

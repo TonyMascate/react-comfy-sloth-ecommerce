@@ -1,9 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useFilterContext } from '../context/filter_context'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
+import { IoMdArrowDropdown } from 'react-icons/io'
 import styled from 'styled-components'
 const Sort = () => {
-  return <h4>sort </h4>
+  const { filtered_products: products, grid_view, setListView, setGridView, sort, updateSort } = useFilterContext()
+
+  const [active, setActive] = useState(false)
+
+  return <Wrapper>
+    <div className="btn-container">
+      <button
+        type='button'
+        className={`${grid_view && 'active'}`}
+        onClick={setGridView}
+      >
+        <BsFillGridFill />
+      </button>
+      <button
+        type='button'
+        className={`${!grid_view && 'active'}`}
+        onClick={setListView}
+      >
+        <BsList />
+      </button>
+    </div>
+    <p>{products.length} produits trouvés</p>
+    <hr />
+    <form>
+      <label htmlFor="sort">Trier par</label>
+      <select 
+      name="sort" 
+      id="sort" 
+      value={sort}
+      onChange={updateSort}
+      className='sort-input'
+      >
+        <option value="price-lowest">Prix (croissant)</option>
+        <option value="price-highest">Prix (décroissant)</option>
+        <option value="name-a">Nom (A - Z)</option>
+        <option value="name-z">Nom (Z - A)</option>
+      </select>
+    </form>
+    {/* <div className="sort">
+      <p>Trier par </p>
+      <div className="sort-input">
+        <div className="content">
+          <p>{sort}</p>
+          <button onClick={() => setActive(!active)}>
+            <IoMdArrowDropdown/>
+          </button>
+        </div>
+        <div className={`dropdown ${active && 'active'}`}>
+          <hr />
+          <p>Prix (croissant)</p>
+          <p>Prix (décroissant)</p>
+          <p>Nom (A - Z)</p>
+          <p>Nom (Z - A)</p>
+        </div>
+      </div>
+    </div> */}
+  </Wrapper>
 }
 
 const Wrapper = styled.section`
@@ -28,7 +85,6 @@ const Wrapper = styled.section`
     column-gap: 2rem;
   }
   p {
-    text-transform: capitalize;
     margin-bottom: 0;
   }
 
@@ -56,17 +112,66 @@ const Wrapper = styled.section`
       color: var(--clr-white);
     }
   }
-
-  .sort-input {
-    border-color: transparent;
-    font-size: 1rem;
-    text-transform: capitalize;
-    padding: 0.25rem 0.5rem;
+  form {
+    .sort-input {
+      background: var(--clr-grey-10);
+      border-radius: var(--radius);
+      border-color: transparent;
+      padding: 0.25rem;
+    }
+    label {
+      margin-right: 10px;
+    }
   }
+  // .sort{
+  //   display: flex;
+  //   align-items: center;
+  //   .sort-input{
+  //     position: relative;
+  //     width: fit-content;
+  //     .content{
+  //       display: flex;
+  //       align-items: center;
+  //       z-index: 200;
+  //       padding-left: 10px;
+  //       button{
+  //         background: none;
+  //         border: none;
+  //       }
+  //       p{
+  //       margin-right: 15px;
+  //       }
+  //     }
+  //     .dropdown{
+  //       z-index: 100;
+  //       width: max-content;
+  //       position: absolute;
+  //       left: 0;
+  //       top: 24px;
+  //       opacity: 0;
+  //       padding-bottom: 10px;
+  //       border: 2px solid grey;
+  //       border-top: none;
+  //       transition: 0.5s ease all;
+  //       hr{
+  //         margin-bottom: 5px;
+  //       }
+  //       p{
+  //         padding: 0 10px 0 8px;
+  //       }
+  //       p:hover{
+  //         cursor: pointer;
+  //         background: #D3D3D3;
+  //       }
+  //     }
+  //     .active{
+  //       opacity: 1;
+  //       background: white;
+  //     }
+  // }
   label {
     font-size: 1rem;
-    text-transform: capitalize;
   }
-`
+`;
 
 export default Sort

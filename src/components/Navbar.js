@@ -11,6 +11,8 @@ import { GiLightningMask } from 'react-icons/gi'
 
 const Nav = () => {
   const {openSidebar} = useProductsContext()
+  const{myUser} = useUserContext()
+
   return (
     <NavContainer>
       <div className="nav-center">
@@ -31,6 +33,11 @@ const Nav = () => {
               </li>
             )
           })}
+          {
+            myUser && <li>
+              <Link to='/checkout'>Paiement</Link>
+            </li>
+          }
         </ul>
         <CartButtons/>
       </div>

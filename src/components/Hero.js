@@ -6,9 +6,22 @@ import heroBcg2 from '../assets/hero-bcg-2.jpeg'
 
 const Hero = () => {
   return (
-    <Wrapper className='section.center'>
+    <Wrapper className='section-center'>
       <article className="content">
-
+        <h1>
+          Stylisez votre <br />
+          zone de confort
+        </h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea quasi culpa rerum temporibus laboriosam sunt fuga alias laborum nulla totam?
+        </p>
+        <Link to='/products' className='btn hero-btn'>
+          Découvrir
+        </Link>
+      </article>
+      <article className="img-container">
+        <img src={heroBcg} alt="jolie table" className='main-img'/>
+        <img src={heroBcg2} alt="personne aui travaille" className='accent-img'/>
       </article>
     </Wrapper>
   )
